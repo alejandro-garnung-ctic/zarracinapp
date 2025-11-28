@@ -12,7 +12,7 @@ Este sistema permite:
 
 ### Flujo Principal
 
-1. Planifican los envíos deseados desde la Google Spreadsheet [Programación de pedidos](https://docs.google.com/spreadsheets/d/contacta-con-el-dueño-del-repo) (contacta con el dueño del repo para acceder a ella).
+1. Planifican los envíos deseados desde la Google Spreadsheet [Programación de pedidos](https://docs.google.com/spreadsheets/d/contacta-con-el-dueño-del-repo) (contacta con el dueño del repo para acceder a esta).
 2. Levanta el sistema si no está ya en funcionamiento. Ver [Init.md](https://github.com/alejandro-garnung-ctic/zarracinapp/assets/docs/Init.md).
 3. Si no lo estás, date de alta en Twilio Sandbox, ver [Twilio](https://github.com/alejandro-garnung-ctic/zarracinapp?tab=readme-ov-file#twilio).
 4. Accede al [dashboard](https://github.com/alejandro-garnung-ctic/zarracinapp?tab=readme-ov-file#dashboard) y pulsa el botón `📝 Procesar pedidos` para lanzar las órdenes que programaste en la Google Spreadsheet.
@@ -26,7 +26,7 @@ Este sistema permite:
 
  - Manejar qué horas dispone y propone el cliente.
  - Usar un número de Whatsapp Bussiness verificado en vez del entorno de pruebas Twilio Sandbox.
- 
+
 ## Twilio
 
 En esta POC se utiliza Twilio Sandbox para enviar y recibir mensajes por Whatsapp, de manera gratuita. 

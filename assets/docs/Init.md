@@ -16,7 +16,7 @@ git clone https://github.com/alejandro-garnung-ctic/zarracinapp.git && git check
 cp .env.example .env
 ```
 
-Luego se edita `.env` con las credenciales reales. El archivo `.env` no se sube a git por seguridad.
+Luego se edita `.env` con las credenciales reales. El archivo `.env` (contacta con el dueño del repo para acceder a este) no se sube a git por seguridad.
 
 **Variables principales a configurar:**
 
