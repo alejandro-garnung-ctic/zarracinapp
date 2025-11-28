@@ -13,7 +13,7 @@ Este sistema permite:
 ### Flujo Principal
 
 1. Planifican los envíos deseados desde la Google Spreadsheet [Programación de pedidos](https://docs.google.com/spreadsheets/d/contacta-con-el-dueño-del-repo) (contacta con el dueño del repo para acceder a esta).
-2. Levanta el sistema si no está ya en funcionamiento. Ver [Init.md](https://github.com/alejandro-garnung-ctic/zarracinapp/assets/docs/Init.md).
+2. Levanta el sistema si no está ya en funcionamiento. Ver [Init.md](https://github.com/alejandro-garnung-ctic/zarracinapp/blob/main/assets/docs/Init.md).
 3. Si no lo estás, date de alta en Twilio Sandbox, ver [Twilio](https://github.com/alejandro-garnung-ctic/zarracinapp?tab=readme-ov-file#twilio).
 4. Accede al [dashboard](https://github.com/alejandro-garnung-ctic/zarracinapp?tab=readme-ov-file#dashboard) y pulsa el botón `📝 Procesar pedidos` para lanzar las órdenes que programaste en la Google Spreadsheet.
 5. En este momento, el sistema envía automáticamente un WhatsApp a cada orden planificada: *"Estimado NOMBRE_CLIENTE, iremos hoy a las XX:XX. ¿Puedes? Responde con SI o NO."*
@@ -37,7 +37,7 @@ Los contactos que deseen utilizar la herramienta deben darse de alta en el siste
 
 Una vez dado de alta ya podrías recibir mensajes del bot y posteriormente contestarlos. 
 
-Para más información, ver [Twilio.md](https://github.com/alejandro-garnung-ctic/zarracinapp/assets/docs/Twilio.md).
+Para más información, ver [Twilio.md](https://github.com/alejandro-garnung-ctic/zarracinapp/blob/main/assets/docs/Twilio.md).
 
 ## 📊 Dashboard
 
@@ -45,23 +45,23 @@ Accede al dashboard en: **http://localhost:8001/dashboard**
 
 El dashboard es una interfaz web simple y minimalista que permite visualizar el estado del sistema en tiempo real.
 
-Para más información, ver [Dashboard.md](https://github.com/alejandro-garnung-ctic/zarracinapp/assets/docs/Dashboard.md).
+Para más información, ver [Dashboard.md](https://github.com/alejandro-garnung-ctic/zarracinapp/blob/main/assets/docs/Dashboard.md).
 
 ## 📝 Uso de la API (para DESARROLLADORES)
 
-Para más información, ver [API.md](https://github.com/alejandro-garnung-ctic/zarracinapp/assets/docs/API.md).
+Para más información, ver [API.md](https://github.com/alejandro-garnung-ctic/zarracinapp/blob/main/assets/docs/API.md).
 
 ## 💾 Base de datos (para DESARROLLADORES)
 
-Para más información, ver [BBDD.md](https://github.com/alejandro-garnung-ctic/zarracinapp/assets/docs/BBDD.md).
+Para más información, ver [BBDD.md](https://github.com/alejandro-garnung-ctic/zarracinapp/blob/main/assets/docs/BBDD.md).
 
 ## Más información
 
 Al ser una Prueba de Concepto, muchos aspecto se tratan superficialmente, pues el objetivo es mostrar la potencial funcionalidad de la aplicación. 
 
-Para más información, ver [Info.md](https://github.com/alejandro-garnung-ctic/zarracinapp/assets/docs/Info.md).
+Para más información, ver [Info.md](https://github.com/alejandro-garnung-ctic/zarracinapp/blob/main/assets/docs/Info.md).
 
 ## 🐛 Troubleshooting
 
-Para más información, ver [Troubleshooting.md](https://github.com/alejandro-garnung-ctic/zarracinapp/assets/docs/Troubleshooting.md).
+Para más información, ver [Troubleshooting.md](https://github.com/alejandro-garnung-ctic/zarracinapp/blob/main/assets/docs/Troubleshooting.md).
 

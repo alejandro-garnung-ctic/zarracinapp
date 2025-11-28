@@ -40,4 +40,4 @@ Esto iniciará:
 - **Dashboard web** en `http://localhost:8001/dashboard`
 - **Adminer** (gestor de BD) en `http://localhost:8081`
 
-Finalmente, crea la URL pública segura mediante Ngrok. Ver [Ngrok.md](https://github.com/alejandro-garnung-ctic/zarracinapp/assets/docs/Ngrok.md).
+Finalmente, crea la URL pública segura mediante Ngrok. Ver [Ngrok.md](https://github.com/alejandro-garnung-ctic/zarracinapp/blob/main/assets/docs/Ngrok.md).

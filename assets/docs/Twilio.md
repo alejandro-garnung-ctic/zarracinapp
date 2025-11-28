@@ -38,7 +38,7 @@
 
 ## 🔧 Configurar Webhook de Twilio (para DESARROLLADORES)
 
-Para más información, ver [Ngrok.md](https://github.com/alejandro-garnung-ctic/zarracinapp/assets/docs/Ngrok.md).
+Para más información, ver [Ngrok.md](https://github.com/alejandro-garnung-ctic/zarracinapp/blob/main/assets/docs/Ngrok.md).
 
 ### Alternativa: Twilio Functions (No recomendado para PoC)
 
