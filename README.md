@@ -27,7 +27,7 @@ Este sistema permite:
  - Manejar qué horas dispone y propone el cliente.
  - Usar un número de Whatsapp Bussiness verificado en vez del entorno de pruebas Twilio Sandbox.
 
-El **Dashboard web** de la PoC está accesible en `https://zarracina-delivery.test.ctic.es/dashboard`.
+El **Dashboard web** de la PoC está accesible [aquí](https://zarracina-delivery.test.ctic.es/dashboard).
 
 ## Twilio
 
