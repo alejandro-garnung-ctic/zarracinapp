@@ -1,4 +1,4 @@
-(Contacta con el dueño del repo para acceder a la URL generada)
+(Para desarrollo)
 
 Para recibir las respuestas del cliente, se configura el webhook en Twilio:
 
@@ -35,7 +35,7 @@ Para recibir las respuestas del cliente, se configura el webhook en Twilio:
    - **Mantener ngrok corriendo** (no cerrar la terminal)
 
 2. **En el panel de Twilio**:
-   - Acceder a https://console.twilio.com/us1/develop/sms/sandbox
+   - Acceder a https://console.twilio.com/us1/develop/whatsapp/sandbox
    - Buscar la sección **"When a message comes in"**
    - **Borrar** la URL por defecto (`https://timberwolf-mastiff-9776.twil.io/demo-reply`)
    - Configurar la URL: `https://tu-url-ngrok.ngrok.io/twilio/incoming`
