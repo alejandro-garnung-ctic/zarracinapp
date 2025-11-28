@@ -14,7 +14,7 @@
 - Revisar los logs: `docker-compose logs backend`
 
 ### El dashboard no carga
-- Verificar que el backend está corriendo en el puerto 8001
+- Verificar que el backend está corriendo en el puerto 8050
 - Verificar que el archivo `backend/app/static/dashboard.html` existe
 - Revisar la consola del navegador para errores de JavaScript
 - Verificar que la API_KEY en el dashboard coincide con la del `docker-compose.yml`

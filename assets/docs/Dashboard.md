@@ -19,7 +19,7 @@
 
 ### Uso del Dashboard
 
-1. **Acceder**: Abrir `http://localhost:8001/dashboard` en el navegador
+1. **Acceder**: Abrir `http://localhost:8050/dashboard` en el navegador
 2. **Monitorear**: Observar cómo cambian los estados cuando los clientes responden
 3. **Verificar**: Confirmar que los envíos se crean correctamente y los estados se actualizan
 

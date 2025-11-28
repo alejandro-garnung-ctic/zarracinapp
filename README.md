@@ -41,7 +41,7 @@ Para más información, ver [Twilio.md](https://github.com/alejandro-garnung-cti
 
 ## 📊 Dashboard
 
-Accede al dashboard en: **http://localhost:8001/dashboard**
+Accede al dashboard en: **http://localhost:8050/dashboard**
 
 El dashboard es una interfaz web simple y minimalista que permite visualizar el estado del sistema en tiempo real.
 

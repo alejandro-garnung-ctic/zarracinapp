@@ -4,7 +4,7 @@ Adminer es una herramienta web simple para gestionar la base de datos PostgreSQL
 
 ### Acceso
 
-1. Abrir **http://localhost:8081** en el navegador
+1. Abrir **http://localhost:8100** en el navegador
 2. Completar el formulario de conexión:
    - **Sistema**: PostgreSQL
    - **Servidor**: `db` (nombre del contenedor)
@@ -21,4 +21,4 @@ Adminer es una herramienta web simple para gestionar la base de datos PostgreSQL
 - Ver estructura de tablas
 - Exportar/importar datos
 
-**Nota**: Adminer se conecta directamente al contenedor de PostgreSQL usando el nombre del servicio `db`, por lo que no se necesita usar `localhost:5433`.
+**Nota**: Adminer se conecta directamente al contenedor de PostgreSQL usando el nombre del servicio `db`, por lo que no se necesita usar `localhost:5400`.

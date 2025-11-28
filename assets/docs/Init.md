@@ -35,9 +35,9 @@ docker compose down && docker compose build --no-cache && docker compose up -d
 ```
 
 Esto iniciará:
-- **PostgreSQL** en el puerto local `5433`
-- **Backend FastAPI** en `http://localhost:8001`
-- **Dashboard web** en `http://localhost:8001/dashboard`
-- **Adminer** (gestor de BD) en `http://localhost:8081`
+- **PostgreSQL** en el puerto local `5400`
+- **Backend FastAPI** en `http://localhost:8050`
+- **Dashboard web** en `http://localhost:8050/dashboard`
+- **Adminer** (gestor de BD) en `http://localhost:8100`
 
 Finalmente, crea la URL pública segura mediante Ngrok. Ver [Ngrok.md](https://github.com/alejandro-garnung-ctic/zarracinapp/blob/main/assets/docs/Ngrok.md).

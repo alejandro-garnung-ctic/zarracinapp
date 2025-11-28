@@ -21,7 +21,7 @@ Para recibir las respuestas del cliente, se configura el webhook en Twilio:
    
    **Ejecutar ngrok:**
    ```bash
-   ngrok http 8001
+   ngrok http 8050
    ```
    
    **Copiar la URL:**
