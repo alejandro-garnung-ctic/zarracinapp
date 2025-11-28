@@ -8,7 +8,7 @@ Authorization: Bearer supersecreta123
 ```
 
 **Usando Swagger UI** (recomendado para pruebas):
-1. Abrir http://localhost:8050/docs
+1. Abrir https://zarracina-delivery.test.ctic.es/docs
 2. Hacer clic en el botón **"Authorize"** (🔒) en la parte superior derecha
 3. Introducir el token: `supersecreta123` (sin "Bearer")
 4. Hacer clic en "Authorize" y luego "Close"
@@ -21,7 +21,7 @@ Authorization: Bearer supersecreta123
 #### Crear un Cliente
 
 ```bash
-curl -X POST http://localhost:8050/customers \
+curl -X POST https://zarracina-delivery.test.ctic.es/customers \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer supersecreta123" \
   -d '{
@@ -36,21 +36,21 @@ curl -X POST http://localhost:8050/customers \
 #### Listar Todos los Clientes
 
 ```bash
-curl -X GET http://localhost:8050/customers \
+curl -X GET https://zarracina-delivery.test.ctic.es/customers \
   -H "Authorization: Bearer supersecreta123"
 ```
 
 #### Obtener un Cliente por ID
 
 ```bash
-curl -X GET http://localhost:8050/customers/{customer_id} \
+curl -X GET https://zarracina-delivery.test.ctic.es/customers/{customer_id} \
   -H "Authorization: Bearer supersecreta123"
 ```
 
 #### Actualizar un Cliente
 
 ```bash
-curl -X PUT http://localhost:8050/customers/{customer_id} \
+curl -X PUT https://zarracina-delivery.test.ctic.es/customers/{customer_id} \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer supersecreta123" \
   -d '{
@@ -66,7 +66,7 @@ curl -X PUT http://localhost:8050/customers/{customer_id} \
 #### Eliminar un Cliente
 
 ```bash
-curl -X DELETE http://localhost:8050/customers/{customer_id} \
+curl -X DELETE https://zarracina-delivery.test.ctic.es/customers/{customer_id} \
   -H "Authorization: Bearer supersecreta123"
 ```
 
@@ -75,7 +75,7 @@ curl -X DELETE http://localhost:8050/customers/{customer_id} \
 #### Crear un Envío (dispara WhatsApp automáticamente)
 
 ```bash
-curl -X POST http://localhost:8050/shipments \
+curl -X POST https://zarracina-delivery.test.ctic.es/shipments \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer supersecreta123" \
   -d '{
@@ -90,28 +90,28 @@ curl -X POST http://localhost:8050/shipments \
 #### Listar Todos los Envíos
 
 ```bash
-curl -X GET http://localhost:8050/shipments \
+curl -X GET https://zarracina-delivery.test.ctic.es/shipments \
   -H "Authorization: Bearer supersecreta123"
 ```
 
 #### Listar Envíos de un Cliente Específico
 
 ```bash
-curl -X GET "http://localhost:8050/shipments?customer_id={customer_id}" \
+curl -X GET "https://zarracina-delivery.test.ctic.es/shipments?customer_id={customer_id}" \
   -H "Authorization: Bearer supersecreta123"
 ```
 
 #### Obtener un Envío por ID
 
 ```bash
-curl -X GET http://localhost:8050/shipments/{shipment_id} \
+curl -X GET https://zarracina-delivery.test.ctic.es/shipments/{shipment_id} \
   -H "Authorization: Bearer supersecreta123"
 ```
 
 #### Obtener Interacciones de un Envío
 
 ```bash
-curl -X GET http://localhost:8050/shipments/{shipment_id}/interactions \
+curl -X GET https://zarracina-delivery.test.ctic.es/shipments/{shipment_id}/interactions \
   -H "Authorization: Bearer supersecreta123"
 ```
 
@@ -120,7 +120,7 @@ curl -X GET http://localhost:8050/shipments/{shipment_id}/interactions \
 ### Leer Google Spreadsheet
 
 ```bash
-curl -X GET http://localhost:8050/spreadsheet \
+curl -X GET https://zarracina-delivery.test.ctic.es/spreadsheet \
   -H "Authorization: Bearer supersecreta123"
 ```
 
@@ -129,7 +129,7 @@ curl -X GET http://localhost:8050/spreadsheet \
 ### Procesar Spreadsheet y Crear Shipments
 
 ```bash
-curl -X POST http://localhost:8050/spreadsheet/process \
+curl -X POST https://zarracina-delivery.test.ctic.es/spreadsheet/process \
   -H "Authorization: Bearer supersecreta123"
 ```
 
@@ -138,7 +138,7 @@ curl -X POST http://localhost:8050/spreadsheet/process \
 ### Probar Envío de WhatsApp (Endpoint de Prueba)
 
 ```bash
-curl -X POST "http://localhost:8050/test/whatsapp?phone=34612345678" \
+curl -X POST "https://zarracina-delivery.test.ctic.es/test/whatsapp?phone=34612345678" \
   -H "Authorization: Bearer supersecreta123"
 ```
 
