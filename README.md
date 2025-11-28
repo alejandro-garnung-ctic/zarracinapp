@@ -10,12 +10,12 @@ Este sistema permite:
 - **Recibir respuestas** del cliente ("SI"/"NO") y actualizar el estado del envío en tiempo real
 - **Visualizar el estado** de todos los envíos desde un dashboard simple
 
-### Flujo Principal
+### Flujo Principal (PoC)
 
 1. Planifican los envíos deseados desde la Google Spreadsheet [Programación de pedidos](https://docs.google.com/spreadsheets/d/contacta-con-el-dueño-del-repo) (contacta con el dueño del repo para acceder a esta).
 2. Levanta el sistema si no está ya en funcionamiento. Ver [Init.md](https://github.com/alejandro-garnung-ctic/zarracinapp/blob/main/assets/docs/Init.md).
 3. Si no lo estás, date de alta en Twilio Sandbox, ver [Twilio](https://github.com/alejandro-garnung-ctic/zarracinapp?tab=readme-ov-file#twilio).
-4. Accede al [dashboard](https://github.com/alejandro-garnung-ctic/zarracinapp?tab=readme-ov-file#dashboard) y pulsa el botón `📝 Procesar pedidos` para lanzar las órdenes que programaste en la Google Spreadsheet.
+4. Accede al [dashboard](https://zarracina-delivery.test.ctic.es/dashboard) y pulsa el botón `📝 Procesar pedidos` para lanzar las órdenes que programaste en la Google Spreadsheet.
 5. En este momento, el sistema envía automáticamente un WhatsApp a cada orden planificada: *"Estimado NOMBRE_CLIENTE, iremos hoy a las XX:XX. ¿Puedes? Responde con SI o NO."*
 6. Espera a dicho mensaje, viendo el dashboard en tiempo real, y cuando llegue, responde.
 7. El sistema actualiza el estado del envío:
@@ -26,8 +26,6 @@ Este sistema permite:
 
  - Manejar qué horas dispone y propone el cliente.
  - Usar un número de Whatsapp Bussiness verificado en vez del entorno de pruebas Twilio Sandbox.
-
-El **Dashboard web** de la PoC está accesible [aquí](https://zarracina-delivery.test.ctic.es/dashboard).
 
 ## Twilio
 
