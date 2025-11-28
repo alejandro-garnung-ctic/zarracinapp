@@ -10,11 +10,6 @@ Para recibir las respuestas del cliente, se configura el webhook en Twilio:
    
    **Instalación:**
    - Descarga ngrok desde: https://ngrok.com/download
-   - O en Linux/WSL:
-     ```bash
-     wget https://bin.equinox.io/c/b/ykexe/ngrok-v3-stable-linux-amd64.tgz
-     tar -xzf ngrok-v3-stable-linux-amd64.tgz
-     ```
    
    **Configuración inicial (solo la primera vez):**
    - Crear una cuenta gratuita en https://ngrok.com/
