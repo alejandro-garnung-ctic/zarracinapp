@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Zarracina Delivery</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { color: #333; margin-bottom: 20px; }
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .status-pending { background: #ffc107; color: #000; }
+        .status-confirmed { background: #28a745; color: #fff; }
+        .status-rejected { background: #dc3545; color: #fff; }
+        .section {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .section h2 { margin-bottom: 15px; color: #555; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        th { background: #f8f9fa; font-weight: 600; color: #555; }
+        tr:hover { background: #f8f9fa; }
+        .refresh-info {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .loading { opacity: 0.6; }
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚚 Dashboard Zarracina Delivery</h1>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <div class="refresh-info">🔄 Actualizando automáticamente cada 5 segundos<span id="loading-dots">...</span></div>
+            <button id="process-spreadsheet-btn" style="padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px; font-weight: bold;">
+                📝 Procesar pedidos
+            </button>
+        </div>
+        <div id="process-result" style="margin-bottom: 20px; display: none;"></div>
+
+        <div class="section">
+            <h2>📦 Envíos</h2>
+            <div id="shipments-container">
+                <p>Cargando...</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>👥 Clientes</h2>
+            <div id="customers-container">
+                <p>Cargando...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_KEY = 'supersecreta123'; // Cambiar según tu configuración
+        const API_URL = window.location.origin;
+
+        async function fetchWithAuth(url, method = 'GET') {
+            const options = {
+                method: method,
+                headers: {
+                    'Authorization': `Bearer ${API_KEY}`
+                }
+            };
+            const response = await fetch(url, options);
+            if (!response.ok) {
+                const errorData = await response.json().catch(() => ({ detail: `Error ${response.status}` }));
+                throw new Error(errorData.detail || `Error ${response.status}`);
+            }
+            return response.json();
+        }
+
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            return date.toLocaleString('es-ES');
+        }
+
+        function getStatusBadge(status) {
+            const badges = {
+                'pending': '<span class="status-badge status-pending">Pendiente</span>',
+                'confirmed': '<span class="status-badge status-confirmed">Confirmado</span>',
+                'rejected': '<span class="status-badge status-rejected">Rechazado</span>',
+                'rescheduled': '<span class="status-badge status-pending">Reagendado</span>',
+                'delivered': '<span class="status-badge status-confirmed">Entregado</span>',
+                'failed': '<span class="status-badge status-rejected">Fallido</span>'
+            };
+            return badges[status] || status;
+        }
+
+        async function loadShipments() {
+            try {
+                const [shipments, customers] = await Promise.all([
+                    fetchWithAuth(`${API_URL}/shipments`),
+                    fetchWithAuth(`${API_URL}/customers`)
+                ]);
+                
+                const customerMap = {};
+                customers.forEach(c => { customerMap[c.id] = c.name; });
+                
+                const container = document.getElementById('shipments-container');
+                
+                if (shipments.length === 0) {
+                    container.innerHTML = '<p>No hay envíos registrados.</p>';
+                    return;
+                }
+
+                let html = '<table><thead><tr><th>Cliente</th><th>Descripción</th><th>Fecha y hora previstas</th><th>Estado</th><th>Creado</th></tr></thead><tbody>';
+                
+                for (const s of shipments) {
+                    const customerName = customerMap[s.customer_id] || `Cliente ${s.customer_id.substring(0, 8)}`;
+                    html += `
+                        <tr>
+                            <td><strong>${customerName}</strong></td>
+                            <td>${s.description}</td>
+                            <td>${formatDate(s.planned_delivery_time)}</td>
+                            <td>${getStatusBadge(s.status)}</td>
+                            <td>${formatDate(s.created_at)}</td>
+                        </tr>
+                    `;
+                }
+                
+                html += '</tbody></table>';
+                container.innerHTML = html;
+            } catch (error) {
+                document.getElementById('shipments-container').innerHTML = 
+                    `<p style="color: red;">Error cargando envíos: ${error.message}</p>`;
+            }
+        }
+
+        async function loadCustomers() {
+            try {
+                const customers = await fetchWithAuth(`${API_URL}/customers`);
+                const container = document.getElementById('customers-container');
+                
+                if (customers.length === 0) {
+                    container.innerHTML = '<p>No hay clientes registrados.</p>';
+                    return;
+                }
+
+                let html = '<table><thead><tr><th>Nombre</th><th>Teléfono</th><th>Horario</th></tr></thead><tbody>';
+                
+                for (const c of customers) {
+                    html += `
+                        <tr>
+                            <td><strong>${c.name}</strong></td>
+                            <td>${c.phone}</td>
+                            <td>${c.delivery_hours_open} - ${c.delivery_hours_close}</td>
+                        </tr>
+                    `;
+                }
+                
+                html += '</tbody></table>';
+                container.innerHTML = html;
+            } catch (error) {
+                document.getElementById('customers-container').innerHTML = 
+                    `<p style="color: red;">Error cargando clientes: ${error.message}</p>`;
+            }
+        }
+
+        async function refresh() {
+            await Promise.all([loadShipments(), loadCustomers()]);
+        }
+
+        // Animación de puntos suspensivos
+        let dotCount = 0;
+        const dotsElement = document.getElementById('loading-dots');
+        
+        function animateDots() {
+            dotCount = (dotCount % 3) + 1;
+            dotsElement.textContent = '.'.repeat(dotCount);
+        }
+        
+        // Animar los puntos cada 500ms
+        setInterval(animateDots, 500);
+
+        // Procesar pedidos
+        document.getElementById('process-spreadsheet-btn').addEventListener('click', async function() {
+            const btn = this;
+            const resultDiv = document.getElementById('process-result');
+            
+            // Deshabilitar botón
+            btn.disabled = true;
+            btn.textContent = '⏳ Procesando...';
+            resultDiv.style.display = 'none';
+            
+            try {
+                const response = await fetchWithAuth(`${API_URL}/spreadsheet/process`, 'POST');
+                
+                // Mostrar resultados
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = `
+                    <div style="background: #d4edda; border: 1px solid #c3e6cb; border-radius: 5px; padding: 15px; color: #155724;">
+                        <strong>✅ Procesamiento completado</strong><br>
+                        <small>
+                            Procesadas: ${response.processed} filas<br>
+                            Clientes creados: ${response.customers_created} | Existentes: ${response.customers_existing}<br>
+                            Shipments creados: ${response.shipments_created} | Omitidos: ${response.shipments_skipped}<br>
+                            WhatsApp enviados: ${response.whatsapp_sent} | Errores: ${response.whatsapp_errors}
+                            ${response.errors.length > 0 ? '<br><br><strong>Errores:</strong><br>' + response.errors.map(e => `• ${e}`).join('<br>') : ''}
+                        </small>
+                    </div>
+                `;
+                
+                // Actualizar lista de shipments
+                await refresh();
+                
+                // Ocultar resultado después de 10 segundos
+                setTimeout(() => {
+                    resultDiv.style.display = 'none';
+                }, 10000);
+                
+            } catch (error) {
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = `
+                    <div style="background: #f8d7da; border: 1px solid #f5c6cb; border-radius: 5px; padding: 15px; color: #721c24;">
+                        <strong>❌ Error procesando spreadsheet:</strong><br>
+                        <small>${error.message}</small>
+                    </div>
+                `;
+            } finally {
+                // Rehabilitar botón
+                btn.disabled = false;
+                btn.textContent = '📝 Procesar pedidos';
+            }
+        });
+
+        // Cargar inicialmente
+        refresh();
+
+        // Actualizar cada 5 segundos
+        setInterval(refresh, 5000);
+    </script>
+</body>
+</html>
+

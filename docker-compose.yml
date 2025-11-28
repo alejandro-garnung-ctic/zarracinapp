@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+  db:
+    build: ./db
+    container_name: poc_db
+    environment:
+      POSTGRES_USER: poc_user
+      POSTGRES_PASSWORD: poc_password
+      POSTGRES_DB: poc_db
+      TZ: Europe/Madrid
+      PGTZ: Europe/Madrid
+    ports:
+      - "5433:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    container_name: poc_backend
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql+psycopg2://poc_user:poc_password@db:5432/poc_db
+    depends_on:
+      - db
+    ports:
+      - "8001:8000"
+
+  adminer:
+    image: adminer:latest
+    container_name: poc_adminer
+    ports:
+      - "8081:8080"
+    depends_on:
+      - db
+    environment:
+      ADMINER_DEFAULT_SERVER: db
+
+volumes:
+  db_data:
